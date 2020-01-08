@@ -34,6 +34,7 @@ getHoliday d
   | isNewYearsEve d = Just (Holiday d "New Year's Eve")
   | isMemorialDay d = Just (Holiday d "Memorial Day")
   | isLaborDay d = Just (Holiday d "Labor Day")
+  | isMartinLutherKingJrDay d = Just (Holiday d "Martin Luther King Jr. Day")
   | otherwise = Nothing
   where
     isChristmas :: Time.Day -> Bool
@@ -58,8 +59,10 @@ getHoliday d
     isLaborDay _d =
       let (_, month, day) = Time.toGregorian _d
        in month == 9 && 1 <= day && day <= 7 && getDayOfWeek _d == Monday
-
-
+    isMartinLutherKingJrDay :: Time.Day -> Bool
+    isMartinLutherKingJrDay _d =
+      let (_, month, day) = Time.toGregorian _d
+       in month == 1 && 15 <= day && day <= 21 && getDayOfWeek _d == Monday
 
 data DayOfWeek
   = Monday

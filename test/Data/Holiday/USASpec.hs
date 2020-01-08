@@ -26,3 +26,6 @@ spec =
   it "returns Labor Day on 2019/9/2" $ do
     let laborDay = Time.fromGregorian 2019 9 2
     USA.getHoliday laborDay `shouldBe` Just (USA.Holiday laborDay "Labor Day")
+  it "returns Martin Luther King Jr. Day on 2020/1/20" $ do
+    let day = Time.fromGregorian 2020 1 20
+    USA.getHoliday day `shouldBe` Just (USA.Holiday day "Martin Luther King Jr. Day")
